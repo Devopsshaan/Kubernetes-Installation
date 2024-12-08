@@ -4,20 +4,20 @@ kubectl is the command-line tool for managing Kubernetes clusters.
 Steps:
 Download the latest kubectl binary:
 
-bash
+
 Copy code
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 This downloads the latest stable version of kubectl.
 (Optional) Verify the download:
 
-bash
+
 Copy code
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
 echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
 Ensures the downloaded file has not been tampered with.
 Make the binary executable and move it:
 
-bash
+
 Copy code
 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 Moves kubectl to a system-wide directory.
@@ -33,7 +33,7 @@ eksctl is a tool to manage Amazon EKS clusters.
 Step 2: Install eksctl (EKS CLI)
 Set platform details:
 
-bash
+
 Copy code
 ARCH=amd64
 PLATFORM=$(uname -s)_$ARCH
@@ -44,24 +44,24 @@ Copy code
 curl -sLO "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$PLATFORM.tar.gz"
 (Optional) Verify the download:
 
-bash
+
 Copy code
 curl -sL "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_checksums.txt" | grep $PLATFORM | sha256sum --check
 Extract and move eksctl to your system path:
 
-bash
+
 Copy code
 tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz
 sudo mv /tmp/eksctl /usr/local/bin/
 Verify eksctl installation:
 
-bash
+
 Copy code
 eksctl version
 Step 3: Create an EKS Cluster
 Run the eksctl command to create a cluster:
 
-bash
+
 Copy code
 eksctl create cluster --name k8sTest-cluster --region us-east-1
 This will create an EKS cluster in the us-east-1 region named k8sTest-cluster.
@@ -70,7 +70,6 @@ If the eksctl command fails due to missing AWS credentials, follow these steps:
 
 Install AWS CLI using the official installer:
 
-bash
 Copy code
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
@@ -81,10 +80,8 @@ Clean up installer files (Optional):
 bash
 Copy code
 rm -rf awscliv2.zip aws
-Configure AWS CLI:
 
-bash
-Copy code
+Configure AWS CLI:
 aws configure
 Enter your AWS Access Key, Secret Key, default region (us-east-1), and output format.
 
